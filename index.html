@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chanon Sawaengphon — Full-Stack Web Developer</title>
+<meta name="description" content="Portfolio of Chanon Sawaengphon (cb), a full-stack developer transitioning from quality engineering, building real-time TypeScript applications with Next.js and NestJS." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #16233f;
+    --blue: #1f5c99;
+    --blue-light: #eaf2fb;
+    --gray-900: #1a1a1a;
+    --gray-700: #444444;
+    --gray-500: #6b7280;
+    --gray-200: #e5e7eb;
+    --gray-100: #f4f6f9;
+    --bg: #ffffff;
+    --radius: 12px;
+    --max-w: 920px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--gray-700);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    background: linear-gradient(180deg, var(--blue-light) 0%, #ffffff 100%);
+    padding: 72px 0 48px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .hero-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 32px; justify-content: space-between; }
+  .hero-text h1 {
+    margin: 0 0 6px;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+  }
+  .hero-text .role {
+    font-size: clamp(16px, 2.2vw, 20px);
+    font-weight: 600;
+    color: var(--blue);
+    margin: 0 0 14px;
+  }
+  .hero-text p.tagline {
+    max-width: 560px;
+    color: var(--gray-700);
+    margin: 0 0 20px;
+    font-size: 16px;
+  }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .badge {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    color: var(--gray-700);
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    border: 1px solid transparent;
+  }
+  .btn:hover { text-decoration: none; }
+  .btn-primary { background: var(--blue); color: #fff; }
+  .btn-primary:hover { background: #184a7d; }
+  .btn-ghost { background: #fff; border-color: var(--gray-200); color: var(--navy); }
+  .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+
+  .avatar-ring {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--navy));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 44px;
+    font-weight: 800;
+    flex-shrink: 0;
+    box-shadow: 0 8px 24px rgba(31,92,153,0.25);
+  }
+
+  section { padding: 56px 0; }
+  section.alt { background: var(--gray-100); }
+  h2.section-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin: 0 0 8px;
+  }
+  h3.section-heading {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--navy);
+    margin: 0 0 28px;
+    letter-spacing: -0.01em;
+  }
+
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: start; }
+  .about-grid p { margin: 0 0 14px; }
+  .fact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .fact-list li { display: flex; gap: 10px; font-size: 14px; }
+  .fact-list .dot { color: var(--blue); font-weight: 700; }
+  .fact-card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+
+  .projects { display: grid; gap: 24px; }
+  .project-card {
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 28px;
+    display: grid;
+    gap: 14px;
+  }
+  .project-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .project-head h4 { margin: 0; font-size: 20px; color: var(--navy); font-weight: 700; }
+  .project-meta { font-size: 13px; color: var(--gray-500); font-weight: 500; }
+  .stack-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .project-card p { margin: 0; font-size: 14.5px; }
+  .highlight-box {
+    background: var(--gray-100);
+    border-left: 3px solid var(--blue);
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .highlight-box strong { color: var(--navy); }
+  .project-links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
+  .project-links a { font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .skill-group h5 {
+    margin: 0 0 10px;
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .skill-group p { margin: 0; font-size: 14px; color: var(--gray-700); }
+
+  .timeline { display: grid; gap: 20px; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .timeline-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .timeline-date { font-size: 13px; color: var(--gray-500); font-weight: 600; padding-top: 2px; }
+  .timeline-content h5 { margin: 0 0 4px; color: var(--navy); font-size: 15px; font-weight: 700; }
+  .timeline-content .org { font-size: 13px; color: var(--gray-500); margin-bottom: 6px; }
+  .timeline-content p { margin: 0; font-size: 14px; }
+
+  footer {
+    padding: 48px 0 60px;
+    text-align: center;
+  }
+  footer h3 { color: var(--navy); font-size: 24px; margin: 0 0 8px; }
+  footer p { margin: 0 0 20px; color: var(--gray-500); }
+  .contact-row { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 14px; font-weight: 600; }
+
+  @media (max-width: 720px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+    .hero-inner { flex-direction: column-reverse; text-align: center; }
+    .cta-row, .badges { justify-content: center; }
+    .hero-text p.tagline { margin-left: auto; margin-right: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <h1>Chanon Sawaengphon</h1>
+      <p class="role">Full-Stack Web Developer</p>
+      <p class="tagline">Six years in quality &amp; process engineering, now building real-time TypeScript applications. I bring root-cause analysis and requirement-traceability discipline to full-stack development with Next.js and NestJS.</p>
+      <div class="badges">
+        <span class="badge">Next.js</span>
+        <span class="badge">React</span>
+        <span class="badge">NestJS</span>
+        <span class="badge">PostgreSQL</span>
+        <span class="badge">Prisma</span>
+        <span class="badge">Socket.IO</span>
+        <span class="badge">Docker</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#projects">View Projects</a>
+        <a class="btn btn-ghost" href="mailto:chanon.sawaengphon@outlook.com">Get in Touch</a>
+        <a class="btn btn-ghost" href="https://github.com/cha130y" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="avatar-ring">CS</div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <h2 class="section-title">About</h2>
+      <h3 class="section-heading">From the factory floor to the full stack</h3>
+      <p>I spent six years in manufacturing engineering — quality assurance at Thai Bridgestone, and process engineering before that at Thai Toray Synthetics. Most of that work centered on root-cause analysis, CAPA investigations, and building the tools and traceability systems that supported them, including workflow applications I built myself in Power Apps.</p>
+      <p>That's where I found I liked building the tool more than running the audit. I completed an intensive full-stack bootcamp at DevNest Tech School, and since then I've built a solo real-time auction platform end-to-end and taken on the real-time module and project-setup lead role on a five-person team project.</p>
+      <p>I'm looking for a full-stack role where I can keep building with TypeScript, Next.js, and NestJS — and where a background in process discipline and testing rigor is seen as an asset, not a gap to explain away.</p>
+    </div>
+    <div class="fact-card">
+      <ul class="fact-list">
+        <li><span class="dot">●</span> Based in Bangkok, Thailand</li>
+        <li><span class="dot">●</span> B.Eng. Chemical Engineering, Khon Kaen University</li>
+        <li><span class="dot">●</span> IATF 16949:2016 certified internal auditor</li>
+        <li><span class="dot">●</span> DevNest Tech School — Advanced Fullstack Bootcamp</li>
+        <li><span class="dot">●</span> Thai (native) · English (intermediate, TOEIC 675)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="projects">
+  <div class="wrap">
+    <h2 class="section-title">Selected Work</h2>
+    <h3 class="section-heading">Projects</h3>
+    <div class="projects">
+
+      <div class="project-card">
+        <div class="project-head">
+          <h4>CBeave Auction Platform</h4>
+          <span class="project-meta">Solo full-stack project · 2026</span>
+        </div>
+        <div class="stack-tags">
+          <span class="tag">Next.js 16</span>
+          <span class="tag">React 19</span>
+          <span class="tag">NestJS 11</span>
+          <span class="tag">Prisma</span>
+          <span class="tag">PostgreSQL 17</span>
+          <span class="tag">Socket.IO</span>
+          <span class="tag">Docker</span>
+        </div>
+        <p>An end-to-end real-time auction platform I designed and built alone: user registration, auction creation and scheduling, live bidding sessions, and post-auction results — with 200+ commits, full API documentation, and architecture decision records.</p>
+        <div class="highlight-box">
+          <strong>Technical highlight:</strong> Solved high-concurrency bidding by combining per-auction WebSocket rooms with serializable database transactions — so two simultaneous bids can't both read the same "current high bid" and silently overwrite each other — plus an anti-sniping mechanism that extends the auction clock when a bid lands in the final seconds.
+        </div>
+        <div class="project-links">
+          <a href="https://cbeave-auction-platform-web.vercel.app" target="_blank" rel="noopener">Live Demo ↗</a>
+          <a href="https://github.com/cha130y/cbeave-auction-platform" target="_blank" rel="noopener">Source Code ↗</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-head">
+          <h4>BidNest — Auction &amp; Marketplace</h4>
+          <span class="project-meta">Team project · 5 developers · 2026 – Present</span>
+        </div>
+        <div class="stack-tags">
+          <span class="tag">Next.js 16</span>
+          <span class="tag">NestJS 11</span>
+          <span class="tag">Prisma</span>
+          <span class="tag">PostgreSQL 17</span>
+          <span class="tag">Socket.IO</span>
+          <span class="tag">Docker</span>
+          <span class="tag">GitHub Actions</span>
+        </div>
+        <p>A dual-mode auction and marketplace platform built by a five-engineer team. My role: <strong>auction &amp; real-time module owner</strong> and <strong>project setup lead</strong> — I architected the pnpm monorepo and Dockerized backend spanning 24 NestJS modules, and set up the CI/CD pipeline, pre-commit hooks, and SRS-driven workflow the rest of the team builds on.</p>
+        <div class="highlight-box">
+          <strong>Technical highlight:</strong> Owned the real-time bidding module end to end — WebSocket bidding, anti-sniping architecture (2-minute extensions, capped at 5 per auction), and the database schemas (ERDs) behind it.
+        </div>
+        <div class="project-links">
+          <a href="https://bidnest-auction-marketplace.vercel.app" target="_blank" rel="noopener">Live Demo ↗</a>
+          <a href="https://github.com/cha130y/bidnest-auction-marketplace" target="_blank" rel="noopener">Source Code ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2 class="section-title">Toolbox</h2>
+    <h3 class="section-heading">Skills</h3>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h5>Frontend</h5>
+        <p>TypeScript, JavaScript, Next.js, React, Tailwind CSS, TanStack Query, React Hook Form</p>
+      </div>
+      <div class="skill-group">
+        <h5>Backend &amp; API</h5>
+        <p>NestJS, Node.js, REST, WebSockets, Socket.IO, Swagger/OpenAPI</p>
+      </div>
+      <div class="skill-group">
+        <h5>Database &amp; ORM</h5>
+        <p>PostgreSQL, SQL, Prisma</p>
+      </div>
+      <div class="skill-group">
+        <h5>Auth &amp; Validation</h5>
+        <p>JWT, OAuth, NextAuth, Zod, class-validator</p>
+      </div>
+      <div class="skill-group">
+        <h5>Testing</h5>
+        <p>Jest, Vitest, React Testing Library, Supertest</p>
+      </div>
+      <div class="skill-group">
+        <h5>DevOps &amp; Tools</h5>
+        <p>Docker, GitHub Actions, pnpm, Git, Jira</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="experience">
+  <div class="wrap">
+    <h2 class="section-title">Background</h2>
+    <h3 class="section-heading">Experience &amp; Training</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">Apr – Sep 2026</div>
+        <div class="timeline-content">
+          <h5>Advanced Fullstack Bootcamp</h5>
+          <div class="org">DevNest Tech School</div>
+          <p>4.5-month intensive program in modern TypeScript full-stack development — Next.js, NestJS, PostgreSQL, and Prisma — that laid the foundation for the projects above.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2017 – 2023</div>
+        <div class="timeline-content">
+          <h5>Quality Assurance Engineer</h5>
+          <div class="org">Thai Bridgestone Co., Ltd. · Rangsit</div>
+          <p>Engineered custom workflow applications (Power Apps) and defect-tracking systems. Led root-cause analyses (CAPA) across the supply chain and maintained ISO 9001 / IATF 16949 QA infrastructure.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2015 – 2016</div>
+        <div class="timeline-content">
+          <h5>Process Engineer</h5>
+          <div class="org">Thai Toray Synthetics Co., Ltd. · Nakhon Pathom</div>
+          <p>Streamlined production workflows and evaluated alternative technologies to scale process capabilities.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h3>Let's build something.</h3>
+    <p>Open to full-stack and backend-leaning developer roles.</p>
+    <div class="contact-row">
+      <a href="mailto:chanon.sawaengphon@outlook.com">chanon.sawaengphon@outlook.com</a>
+      <a href="tel:+66615450217">+66 61-545-0217</a>
+      <a href="https://github.com/cha130y" target="_blank" rel="noopener">github.com/cha130y</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
