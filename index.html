@@ -5,6 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Chanon Sawaengphon — Full-Stack Web Developer</title>
 <meta name="description" content="Portfolio of Chanon Sawaengphon (cb), a full-stack developer transitioning from quality engineering, building real-time TypeScript applications with Next.js and NestJS." />
+<meta name="theme-color" content="#eaf2fb" />
+<link rel="canonical" href="https://chanon-sawaengphon-portfolio.vercel.app/" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Chanon Sawaengphon" />
+<meta property="og:title" content="Chanon Sawaengphon — Full-Stack Web Developer" />
+<meta property="og:description" content="Portfolio of Chanon Sawaengphon (cb), a full-stack developer transitioning from quality engineering, building real-time TypeScript applications with Next.js and NestJS." />
+<meta property="og:url" content="https://chanon-sawaengphon-portfolio.vercel.app/" />
+<meta property="og:image" content="https://chanon-sawaengphon-portfolio.vercel.app/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Chanon Sawaengphon, Full-Stack Web Developer, with screenshots of the CBeave and BidNest auction platforms" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Chanon Sawaengphon — Full-Stack Web Developer" />
+<meta name="twitter:description" content="Portfolio of Chanon Sawaengphon (cb), a full-stack developer transitioning from quality engineering, building real-time TypeScript applications with Next.js and NestJS." />
+<meta name="twitter:image" content="https://chanon-sawaengphon-portfolio.vercel.app/assets/og-image.png" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,7 +36,7 @@
     --blue-light: #eaf2fb;
     --gray-900: #1a1a1a;
     --gray-700: #444444;
-    --gray-500: #6b7280;
+    --gray-500: #5b6472;
     --gray-200: #e5e7eb;
     --gray-100: #f4f6f9;
     --bg: #ffffff;
@@ -33,7 +54,22 @@
   }
   a { color: var(--blue); text-decoration: none; }
   a:hover { text-decoration: underline; }
+  a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
   .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+  .skip-link {
+    position: absolute;
+    left: 16px;
+    top: -60px;
+    z-index: 10;
+    background: var(--navy);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .skip-link:focus { top: 16px; text-decoration: none; }
 
   header.hero {
     background: linear-gradient(180deg, var(--blue-light) 0%, #ffffff 100%);
@@ -105,7 +141,7 @@
 
   section { padding: 56px 0; }
   section.alt { background: var(--gray-100); }
-  h2.section-title {
+  .eyebrow {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -113,7 +149,7 @@
     color: var(--blue);
     margin: 0 0 8px;
   }
-  h3.section-heading {
+  h2.section-heading {
     font-size: 26px;
     font-weight: 800;
     color: var(--navy);
@@ -140,10 +176,36 @@
     border-radius: var(--radius);
     padding: 28px;
     display: grid;
-    gap: 14px;
+    grid-template-columns: 360px minmax(0, 1fr);
+    grid-template-areas: "head head" "visual story";
+    gap: 20px 28px;
+    align-items: start;
   }
-  .project-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; }
-  .project-head h4 { margin: 0; font-size: 20px; color: var(--navy); font-weight: 700; }
+  .project-shot {
+    display: block;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(22,35,63,0.08);
+    line-height: 0;
+  }
+  .project-shot:hover { border-color: var(--blue); }
+  .project-shot img { display: block; width: 100%; height: auto; }
+  .project-thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .project-thumbs a {
+    display: block;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 6px rgba(22,35,63,0.08);
+    line-height: 0;
+  }
+  .project-thumbs a:hover { border-color: var(--blue); }
+  .project-thumbs img { display: block; width: 100%; height: auto; }
+  .project-visual { grid-area: visual; display: grid; gap: 14px; min-width: 0; }
+  .project-story { grid-area: story; display: grid; gap: 14px; min-width: 0; }
+  .project-head { grid-area: head; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .project-head h3 { margin: 0; font-size: 20px; color: var(--navy); font-weight: 700; }
   .project-meta { font-size: 13px; color: var(--gray-500); font-weight: 500; }
   .stack-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tag {
@@ -154,7 +216,7 @@
     padding: 4px 10px;
     border-radius: 6px;
   }
-  .project-card p { margin: 0; font-size: 14.5px; }
+  .project-story p { margin: 0; font-size: 14.5px; }
   .highlight-box {
     background: var(--gray-100);
     border-left: 3px solid var(--blue);
@@ -163,15 +225,14 @@
     font-size: 14px;
   }
   .highlight-box strong { color: var(--navy); }
-  .project-links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
-  .project-links a { font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; }
+  .project-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
 
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
   }
-  .skill-group h5 {
+  .skill-group h3 {
     margin: 0 0 10px;
     color: var(--navy);
     font-size: 14px;
@@ -189,7 +250,7 @@
   }
   .timeline-item:last-child { border-bottom: none; padding-bottom: 0; }
   .timeline-date { font-size: 13px; color: var(--gray-500); font-weight: 600; padding-top: 2px; }
-  .timeline-content h5 { margin: 0 0 4px; color: var(--navy); font-size: 15px; font-weight: 700; }
+  .timeline-content h3 { margin: 0 0 4px; color: var(--navy); font-size: 15px; font-weight: 700; }
   .timeline-content .org { font-size: 13px; color: var(--gray-500); margin-bottom: 6px; }
   .timeline-content p { margin: 0; font-size: 14px; }
 
@@ -197,20 +258,35 @@
     padding: 48px 0 60px;
     text-align: center;
   }
-  footer h3 { color: var(--navy); font-size: 24px; margin: 0 0 8px; }
+  footer h2 { color: var(--navy); font-size: 24px; margin: 0 0 8px; }
   footer p { margin: 0 0 20px; color: var(--gray-500); }
-  .contact-row { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 14px; font-weight: 600; }
+  .contact-row { display: flex; justify-content: center; gap: 0 20px; flex-wrap: wrap; font-size: 14px; font-weight: 600; }
+  .contact-row a { padding: 10px 4px; }
 
+  @media (max-width: 860px) {
+    .project-card { grid-template-columns: 1fr; grid-template-areas: "head" "visual" "story"; gap: 18px; }
+  }
   @media (max-width: 720px) {
-    .about-grid { grid-template-columns: 1fr; }
+    .wrap { padding: 0 20px; }
+    header.hero { padding: 48px 0 36px; }
+    .avatar-ring { width: 104px; height: 104px; font-size: 36px; }
+    section { padding: 40px 0; }
+    .project-card { padding: 20px; }
+    .about-grid { grid-template-columns: 1fr; gap: 28px; }
     .timeline-item { grid-template-columns: 1fr; gap: 4px; }
     .hero-inner { flex-direction: column-reverse; text-align: center; }
     .cta-row, .badges { justify-content: center; }
     .hero-text p.tagline { margin-left: auto; margin-right: auto; }
+    .project-links .btn { flex: 1 1 140px; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
   }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="hero">
   <div class="wrap hero-inner">
@@ -234,26 +310,28 @@
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/chanon-sawaengphon" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </div>
-    <div class="avatar-ring">CS</div>
+    <div class="avatar-ring" aria-hidden="true">CS</div>
   </div>
 </header>
+
+<main id="main">
 
 <section id="about">
   <div class="wrap about-grid">
     <div>
-      <h2 class="section-title">About</h2>
-      <h3 class="section-heading">From the factory floor to the full stack</h3>
+      <p class="eyebrow">About</p>
+      <h2 class="section-heading">From the factory floor to the full stack</h2>
       <p>I spent six years in manufacturing engineering — quality assurance at Thai Bridgestone, and process engineering before that at Thai Toray Synthetics. Most of that work centered on root-cause analysis, CAPA investigations, and building the tools and traceability systems that supported them, including workflow applications I built myself in Power Apps.</p>
       <p>That's where I found I liked building the tool more than running the audit. I completed an intensive full-stack bootcamp at DevNest Tech School, and since then I've built a solo real-time auction platform end-to-end and taken on the real-time module and project-setup lead role on a five-person team project.</p>
       <p>I'm looking for a full-stack role where I can keep building with TypeScript, Next.js, and NestJS — and where a background in process discipline and testing rigor is seen as an asset, not a gap to explain away.</p>
     </div>
     <div class="fact-card">
       <ul class="fact-list">
-        <li><span class="dot">●</span> Based in Bangkok, Thailand</li>
-        <li><span class="dot">●</span> B.Eng. Chemical Engineering, Khon Kaen University</li>
-        <li><span class="dot">●</span> IATF 16949:2016 certified internal auditor</li>
-        <li><span class="dot">●</span> DevNest Tech School — Advanced Fullstack Bootcamp</li>
-        <li><span class="dot">●</span> Thai (native) · English (intermediate, TOEIC 675)</li>
+        <li><span class="dot" aria-hidden="true">●</span> Based in Bangkok, Thailand</li>
+        <li><span class="dot" aria-hidden="true">●</span> B.Eng. Chemical Engineering, Khon Kaen University</li>
+        <li><span class="dot" aria-hidden="true">●</span> IATF 16949:2016 certified internal auditor</li>
+        <li><span class="dot" aria-hidden="true">●</span> DevNest Tech School — Advanced Fullstack Bootcamp</li>
+        <li><span class="dot" aria-hidden="true">●</span> Thai (native) · English (intermediate, TOEIC 675)</li>
       </ul>
     </div>
   </div>
@@ -261,57 +339,79 @@
 
 <section class="alt" id="projects">
   <div class="wrap">
-    <h2 class="section-title">Selected Work</h2>
-    <h3 class="section-heading">Projects</h3>
+    <p class="eyebrow">Selected Work</p>
+    <h2 class="section-heading">Projects</h2>
     <div class="projects">
 
-      <div class="project-card">
+      <article class="project-card">
         <div class="project-head">
-          <h4>CBeave Auction Platform</h4>
+          <h3>CBeave Auction Platform</h3>
           <span class="project-meta">Solo full-stack project · 2026</span>
         </div>
-        <div class="stack-tags">
-          <span class="tag">Next.js 16</span>
-          <span class="tag">React 19</span>
-          <span class="tag">NestJS 11</span>
-          <span class="tag">Prisma</span>
-          <span class="tag">PostgreSQL 17</span>
-          <span class="tag">Socket.IO</span>
-          <span class="tag">Docker</span>
+        <div class="project-visual">
+          <a class="project-shot" href="https://cbeave-auction-platform-web.vercel.app" target="_blank" rel="noopener" tabindex="-1">
+            <img src="assets/cbeave.webp" width="1024" height="640" loading="lazy" decoding="async" alt="Screenshot of the CBeave landing page: 'Find it. Bid live. Win it.' with a rotating carousel of live auctions">
+          </a>
+          <div class="project-thumbs">
+            <a href="assets/cbeave-detail.webp" target="_blank" rel="noopener"><img src="assets/cbeave-detail.webp" width="1280" height="800" loading="lazy" decoding="async" alt="CBeave auction detail page for a Porsche Cayman: current bid, minimum increment, bid count, reserve status and an Enter Live Arena button"></a>
+            <a href="assets/cbeave-browse.webp" target="_blank" rel="noopener"><img src="assets/cbeave-browse.webp" width="1280" height="800" loading="lazy" decoding="async" alt="CBeave hot auctions grid showing live auctions for a Porsche Cayman, yellow pumps and a designer tote"></a>
+          </div>
+          <div class="project-links">
+            <a class="btn btn-primary" href="https://cbeave-auction-platform-web.vercel.app" target="_blank" rel="noopener" aria-label="Live Demo — CBeave Auction Platform">Live Demo <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-ghost" href="https://github.com/cha130y/cbeave-auction-platform" target="_blank" rel="noopener" aria-label="Source Code — CBeave Auction Platform">Source Code <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
-        <p>An end-to-end real-time auction platform I designed and built alone: user registration, auction creation and scheduling, live bidding sessions, and post-auction results — with 200+ commits, full API documentation, and architecture decision records.</p>
-        <div class="highlight-box">
-          <strong>Technical highlight:</strong> Solved high-concurrency bidding by combining per-auction WebSocket rooms with serializable database transactions — so two simultaneous bids can't both read the same "current high bid" and silently overwrite each other — plus an anti-sniping mechanism that extends the auction clock when a bid lands in the final seconds.
+        <div class="project-story">
+          <div class="stack-tags">
+            <span class="tag">Next.js 16</span>
+            <span class="tag">React 19</span>
+            <span class="tag">NestJS 11</span>
+            <span class="tag">Prisma</span>
+            <span class="tag">PostgreSQL 17</span>
+            <span class="tag">Socket.IO</span>
+            <span class="tag">Docker</span>
+          </div>
+          <p>An end-to-end real-time auction platform I designed and built alone: user registration, auction creation and scheduling, live bidding sessions, and post-auction results — with 200+ commits, full API documentation, and architecture decision records.</p>
+          <div class="highlight-box">
+            <strong>Technical highlight:</strong> Solved high-concurrency bidding by combining per-auction WebSocket rooms with serializable database transactions — so two simultaneous bids can't both read the same "current high bid" and silently overwrite each other — plus an anti-sniping mechanism that extends the auction clock when a bid lands in the final seconds.
+          </div>
         </div>
-        <div class="project-links">
-          <a href="https://cbeave-auction-platform-web.vercel.app" target="_blank" rel="noopener">Live Demo ↗</a>
-          <a href="https://github.com/cha130y/cbeave-auction-platform" target="_blank" rel="noopener">Source Code ↗</a>
-        </div>
-      </div>
+      </article>
 
-      <div class="project-card">
+      <article class="project-card">
         <div class="project-head">
-          <h4>BidNest — Auction &amp; Marketplace</h4>
+          <h3>BidNest — Auction &amp; Marketplace</h3>
           <span class="project-meta">Team project · 5 developers · 2026 – Present</span>
         </div>
-        <div class="stack-tags">
-          <span class="tag">Next.js 16</span>
-          <span class="tag">NestJS 11</span>
-          <span class="tag">Prisma</span>
-          <span class="tag">PostgreSQL 17</span>
-          <span class="tag">Socket.IO</span>
-          <span class="tag">Docker</span>
-          <span class="tag">GitHub Actions</span>
+        <div class="project-visual">
+          <a class="project-shot" href="https://bidnest-auction-marketplace.vercel.app" target="_blank" rel="noopener" tabindex="-1">
+            <img src="assets/bidnest.webp" width="1280" height="694" loading="lazy" decoding="async" alt="Screenshot of the BidNest home page: a live-bid ticker, the BidNest hero, and a live auction card for a 2026 Chevrolet Corvette at ฿2,500,000 with a countdown timer">
+          </a>
+          <div class="project-thumbs">
+            <a href="assets/bidnest-arena.webp" target="_blank" rel="noopener"><img src="assets/bidnest-arena.webp" width="1280" height="632" loading="lazy" decoding="async" alt="Two browsers bidding on the same BidNest auction, both showing the anti-sniping notice and an extended countdown"></a>
+            <a href="assets/bidnest-results.webp" target="_blank" rel="noopener"><img src="assets/bidnest-results.webp" width="1280" height="632" loading="lazy" decoding="async" alt="BidNest auction results in two browsers: closed auction with a winner podium and the winning price"></a>
+          </div>
+          <div class="project-links">
+            <a class="btn btn-primary" href="https://bidnest-auction-marketplace.vercel.app" target="_blank" rel="noopener" aria-label="Live Demo — BidNest Auction &amp; Marketplace">Live Demo <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-ghost" href="https://github.com/cha130y/bidnest-auction-marketplace" target="_blank" rel="noopener" aria-label="Source Code — BidNest Auction &amp; Marketplace">Source Code <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
-        <p>A dual-mode auction and marketplace platform built by a five-engineer team. My role: <strong>auction &amp; real-time module owner</strong> and <strong>project setup lead</strong> — I architected the pnpm monorepo and Dockerized backend spanning 24 NestJS modules, and set up the CI/CD pipeline, pre-commit hooks, and SRS-driven workflow the rest of the team builds on.</p>
-        <div class="highlight-box">
-          <strong>Technical highlight:</strong> Owned the real-time bidding module end to end — WebSocket bidding, anti-sniping architecture (2-minute extensions, capped at 5 per auction), and the database schemas (ERDs) behind it.
+        <div class="project-story">
+          <div class="stack-tags">
+            <span class="tag">Next.js 16</span>
+            <span class="tag">NestJS 11</span>
+            <span class="tag">Prisma</span>
+            <span class="tag">PostgreSQL 17</span>
+            <span class="tag">Socket.IO</span>
+            <span class="tag">Docker</span>
+            <span class="tag">GitHub Actions</span>
+          </div>
+          <p>A dual-mode auction and marketplace platform built by a five-engineer team. My role: <strong>auction &amp; real-time module owner</strong> and <strong>project setup lead</strong> — I architected the pnpm monorepo and Dockerized backend spanning 24 NestJS modules, and set up the CI/CD pipeline, pre-commit hooks, and SRS-driven workflow the rest of the team builds on.</p>
+          <div class="highlight-box">
+            <strong>Technical highlight:</strong> Owned the real-time bidding module end to end — WebSocket bidding, anti-sniping architecture (2-minute extensions, capped at 5 per auction), and the database schemas (ERDs) behind it.
+          </div>
         </div>
-        <div class="project-links">
-          <a href="https://bidnest-auction-marketplace.vercel.app" target="_blank" rel="noopener">Live Demo ↗</a>
-          <a href="https://github.com/cha130y/bidnest-auction-marketplace" target="_blank" rel="noopener">Source Code ↗</a>
-        </div>
-      </div>
+      </article>
 
     </div>
   </div>
@@ -319,31 +419,31 @@
 
 <section id="skills">
   <div class="wrap">
-    <h2 class="section-title">Toolbox</h2>
-    <h3 class="section-heading">Skills</h3>
+    <p class="eyebrow">Toolbox</p>
+    <h2 class="section-heading">Skills</h2>
     <div class="skills-grid">
       <div class="skill-group">
-        <h5>Frontend</h5>
+        <h3>Frontend</h3>
         <p>TypeScript, JavaScript, Next.js, React, Tailwind CSS, TanStack Query, React Hook Form</p>
       </div>
       <div class="skill-group">
-        <h5>Backend &amp; API</h5>
+        <h3>Backend &amp; API</h3>
         <p>NestJS, Node.js, REST, WebSockets, Socket.IO, Swagger/OpenAPI</p>
       </div>
       <div class="skill-group">
-        <h5>Database &amp; ORM</h5>
+        <h3>Database &amp; ORM</h3>
         <p>PostgreSQL, SQL, Prisma</p>
       </div>
       <div class="skill-group">
-        <h5>Auth &amp; Validation</h5>
+        <h3>Auth &amp; Validation</h3>
         <p>JWT, OAuth, NextAuth, Zod, class-validator</p>
       </div>
       <div class="skill-group">
-        <h5>Testing</h5>
+        <h3>Testing</h3>
         <p>Jest, Vitest, React Testing Library, Supertest</p>
       </div>
       <div class="skill-group">
-        <h5>DevOps &amp; Tools</h5>
+        <h3>DevOps &amp; Tools</h3>
         <p>Docker, GitHub Actions, pnpm, Git, Jira</p>
       </div>
     </div>
@@ -352,13 +452,13 @@
 
 <section class="alt" id="experience">
   <div class="wrap">
-    <h2 class="section-title">Background</h2>
-    <h3 class="section-heading">Experience &amp; Training</h3>
+    <p class="eyebrow">Background</p>
+    <h2 class="section-heading">Experience &amp; Training</h2>
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-date">Apr – Sep 2026</div>
         <div class="timeline-content">
-          <h5>Advanced Fullstack Bootcamp</h5>
+          <h3>Advanced Fullstack Bootcamp</h3>
           <div class="org">DevNest Tech School</div>
           <p>4.5-month intensive program in modern TypeScript full-stack development — Next.js, NestJS, PostgreSQL, and Prisma — that laid the foundation for the projects above.</p>
         </div>
@@ -366,7 +466,7 @@
       <div class="timeline-item">
         <div class="timeline-date">2017 – 2023</div>
         <div class="timeline-content">
-          <h5>Quality Assurance Engineer</h5>
+          <h3>Quality Assurance Engineer</h3>
           <div class="org">Thai Bridgestone Co., Ltd. · Rangsit</div>
           <p>Engineered custom workflow applications (Power Apps) and defect-tracking systems. Led root-cause analyses (CAPA) across the supply chain and maintained ISO 9001 / IATF 16949 QA infrastructure.</p>
         </div>
@@ -374,7 +474,7 @@
       <div class="timeline-item">
         <div class="timeline-date">2015 – 2016</div>
         <div class="timeline-content">
-          <h5>Process Engineer</h5>
+          <h3>Process Engineer</h3>
           <div class="org">Thai Toray Synthetics Co., Ltd. · Nakhon Pathom</div>
           <p>Streamlined production workflows and evaluated alternative technologies to scale process capabilities.</p>
         </div>
@@ -383,9 +483,11 @@
   </div>
 </section>
 
+</main>
+
 <footer id="contact">
   <div class="wrap">
-    <h3>Let's build something.</h3>
+    <h2>Let's build something.</h2>
     <p>Open to full-stack and backend-leaning developer roles.</p>
     <div class="contact-row">
       <a href="mailto:chanon.sawaengphon@outlook.com">chanon.sawaengphon@outlook.com</a>
