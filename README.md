@@ -1,35 +1,39 @@
 # Portfolio Site
 
-A single-file, self-contained portfolio page (`index.html`) — no build step, no dependencies beyond one Google Fonts stylesheet. Content pulled directly from your resume and both project repos, so nothing here overclaims what's in CBeave/BidNest.
+The personal portfolio of **Chanon Sawaengphon** — a full-stack web developer transitioning from six years in quality and process engineering (Thai Bridgestone, Thai Toray Synthetics) into TypeScript full-stack development after completing DevNest Tech School's Advanced Fullstack Bootcamp.
 
-## Deploy it — pick one
+Single page, single file ([`index.html`](index.html)), no build tooling — see [Tech stack](#tech-stack) below.
 
-### Option A: Vercel (recommended, free, ~5 minutes)
-1. Create a new GitHub repo (e.g. `cha130y/portfolio`) and push this folder to it:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial portfolio site"
-   git branch -M main
-   git remote add origin https://github.com/cha130y/portfolio.git
-   git push -u origin main
-   ```
-2. Go to [vercel.com](https://vercel.com), sign in with GitHub, click **Add New → Project**, and import the `portfolio` repo.
-3. Vercel auto-detects it as a static site — just click **Deploy**. No framework preset or build command needed.
-4. You'll get a URL like `portfolio-cha130y.vercel.app`. You can rename the project (Settings → General → Project Name) to get a cleaner subdomain, e.g. `chanon-dev.vercel.app`, or attach a custom domain later if you buy one.
+## What's on the page
 
-### Option B: GitHub Pages (also free)
-1. Push this folder to a GitHub repo named exactly `cha130y.github.io` (your GitHub Pages user site), or to any repo and enable Pages for it in Settings → Pages → Deploy from branch → `main` / root.
-2. Your site will be live at `https://cha130y.github.io` (or `https://cha130y.github.io/<repo-name>` for a project repo).
+- **Hero** — name, role, tagline, and core stack badges (Next.js, React, NestJS, PostgreSQL, Prisma, Socket.IO, Docker), with links to email, GitHub, and LinkedIn.
+- **About** — the career pivot from manufacturing QA/process engineering into software, plus quick facts (location, degree, certifications, languages).
+- **Projects** — the two flagship projects:
+  - **CBeave Auction Platform** — a solo-built, end-to-end real-time auction platform (Next.js, NestJS, Prisma, PostgreSQL, Socket.IO). Highlight: concurrency-safe bidding via per-auction WebSocket rooms + serializable DB transactions, plus anti-sniping clock extensions.
+  - **BidNest — Auction & Marketplace** — a 5-developer team project where Chanon owns the real-time bidding module and acts as project-setup lead (pnpm monorepo, Dockerized 24-module NestJS backend, CI/CD).
+- **Skills** — grouped by frontend, backend/API, database/ORM, auth/validation, testing, and DevOps/tooling.
+- **Experience & Training** — timeline from the DevNest bootcamp back through the QA and process engineering roles.
+- **Contact** — email, phone, GitHub, LinkedIn.
 
-Either option is fine — Vercel is slightly faster to set up and matches the stack you already use for CBeave/BidNest.
+## Tech stack
 
-## After it's live
+- Plain HTML5 + CSS (custom properties for theming, CSS Grid/Flexbox for layout)
+- No JavaScript, no framework, no bundler
+- One external asset: the `Inter` font from Google Fonts
 
-- Add the link to your resume's contact line (next to GitHub) and to your LinkedIn profile.
-- Update the "Live Demo" / "Source Code" links in `index.html` if either project's URL ever changes.
-- If you get a LinkedIn URL you want listed, add it next to the GitHub link in the header CTA row and the footer contact row.
+## Project structure
 
-## Customizing
+```
+portfolio/
+├── index.html   # Entire site: markup, CSS (in <style>), content
+├── README.md
+└── .gitignore
+```
 
-Everything is in one file, `index.html`, with plain CSS in a `<style>` block at the top — no build tools involved. To change content, search for the text you want to edit directly. The color palette is defined once at the top of the CSS as CSS variables (`--navy`, `--blue`, etc.) if you want to adjust the look.
+## Customizing content
+
+Everything is in `index.html`, with the CSS in a `<style>` block at the top of `<head>`. To change content, search for the text you want to edit directly — it's plain HTML, no templating. The color palette is defined once as CSS custom properties near the top of the stylesheet (`--navy`, `--blue`, etc.) if you want to adjust the look. Update the "Live Demo" / "Source Code" links if either project's URL changes.
+
+## Running & deploying
+
+No build step required. Open `index.html` directly, or serve it locally with `npx serve .` / `python -m http.server`. Deploy as a static site on [Vercel](https://vercel.com) or [GitHub Pages](https://pages.github.com) — both work out of the box.
